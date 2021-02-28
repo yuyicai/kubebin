@@ -15,8 +15,9 @@ jobs:
 
       - name: set env
         run: |
-          echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-          echo $RELEASE_VERSION
+          echo $GITHUB_REF
+          echo "KUBE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+          echo $KUBE_VERSION
           echo ${{ env.RELEASE_VERSION }}
 
       - name: Download files
