@@ -16,8 +16,9 @@ jobs:
       - name: Download files
         run: |
           echo "KUBE_VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
-          echo "KUBE_VERSION: $KUBE_VERSION"
-          echo "KUBE_VERSION=${KUBE_VERSION##*/}" >> $GITHUB_ENV
+          echo "KUBE_VERSION: ${KUBE_VERSION}"
+          echo "KUBE_VERSION: ${{ env.KUBE_VERSION }}"
+          echo "KUBE_VERSION=${KUBE_VERSION%*.}" >> $GITHUB_ENV
           echo "KUBE_MINOR_VERSION: $KUBE_MINOR_VERSION"
           . ./version/$(echo $KUBE_VERSION | grep -E -o "^v(0|[0-9]*)\.(0|[0-9]*)").sh
           . download_kube.sh
