@@ -16,7 +16,7 @@ jobs:
       - name: Download files
         run: |
           echo "KUBE_VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
-          . ./version/$(echo $KUBE_VERSION | grep -E -o "^v(0|[0-9]*)\.(0|[0-9]*)).sh
+          . ./version/$(echo $KUBE_VERSION | grep -E -o "^v(0|[0-9]*)\.(0|[0-9]*)").sh
           . download_kube.sh
 
       - name: Login to registry.aliyuncs.com
