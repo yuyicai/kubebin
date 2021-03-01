@@ -7,9 +7,9 @@ export PLATFORM=amd64
 # version
 kubeadm=${TEMP}/kubernetes/server/bin/kubeadm
 export KUBE_MINOR_VERSION=$(echo ${KUBE_VERSION} | grep -E -o "^v(0|[0-9]*)\.(0|[0-9]*)")
-export PAUSE_VERSION=$(kubeadm --kubernetes-version=$(kubeadm version -o short) config images list | grep pause | awk -F ":" '{print $2}')
-export ETCD_VERSION=$(kubeadm --kubernetes-version=$(kubeadm version -o short) config images list | grep etcd | awk -F ":" '{print $2}')
-export COREDNS_VERSION=$(kubeadm --kubernetes-version=$(kubeadm version -o short) config images list | grep coredns | awk -F ":" '{print $2}')
+export PAUSE_VERSION=$(${kubeadm} --kubernetes-version=$(${kubeadm} version -o short) config images list | grep pause | awk -F ":" '{print $2}')
+export ETCD_VERSION=$(${kubeadm} --kubernetes-version=$(${kubeadm} version -o short) config images list | grep etcd | awk -F ":" '{print $2}')
+export COREDNS_VERSION=$(${kubeadm} --kubernetes-version=$(${kubeadm} version -o short) config images list | grep coredns | awk -F ":" '{print $2}')
 
 export DOCKER_VERSION=19.03.15
 export CNI_VERSION=v0.8.6
