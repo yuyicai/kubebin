@@ -3,7 +3,7 @@ on:
     tags:
     - 'v*'
 
-name: Upload Kubernetes files to aliyun registry
+name: Upload Kubernetes files to ghcr registry
 
 jobs:
   build:
