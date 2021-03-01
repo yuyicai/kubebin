@@ -20,9 +20,9 @@ jobs:
 
       - name: Download files
         run: |
-          . download_kubernetes.sh
-          . ./version/$(echo $KUBE_VERSION | grep -E -o "^v(0|[0-9]*)\.(0|[0-9]*)").sh
-          . download.sh
+          . ${GITHUB_WORKSPACE}/download_kubernetes.sh
+          . ${GITHUB_WORKSPACE}/version/$(echo $KUBE_VERSION | grep -E -o "^v(0|[0-9]*)\.(0|[0-9]*)").sh
+          . ${GITHUB_WORKSPACE}/download.sh
 
       - name: Login to registry
         uses: docker/login-action@v1
