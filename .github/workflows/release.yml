@@ -26,9 +26,9 @@ jobs:
       - name: Login to registry
         uses: docker/login-action@v1
         with:
-          registry: registry.cn-hangzhou.aliyuncs.com
-          username: ${{ secrets.ALIYUN_USERNAME }}
-          password: ${{ secrets.ALIYUN_PASSWORD }}
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
 
       - name: Build and push
         id: docker_build
@@ -37,7 +37,7 @@ jobs:
           context: /tmp/.kubei/${{ env.KUBE_VERSION }}
           file: ./docker/Dockerfile
           push: true
-          tags: registry.cn-hangzhou.aliyuncs.com/kubebin/kube-files:${{ env.KUBE_VERSION }}
+          tags: ghcr.io/${{ github.repository }}/kube-files:${{ env.KUBE_VERSION }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
