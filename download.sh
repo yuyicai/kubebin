@@ -137,11 +137,16 @@ gen_pkg() {
     tar --owner=0 --group=0 -zcvf ../kube-files.tar.gz ./
 }
 
+fix_cin_version() {
+    sed "s/^CNI_VERSION.*$/CNI_VERSION=${CNI_VERSION}/" "${PKG}"/kube/default.sh
+}
+
 main() {
 
     mkdir -p ${TEMP}
     mkdir -p ${PKG}
 
+    fix_cin_version
     gen_docker_conf
     download_docker
 
