@@ -138,7 +138,8 @@ gen_pkg() {
 }
 
 fix_cin_version() {
-    sed "s/^CNI_VERSION.*$/CNI_VERSION=${CNI_VERSION}/" "${PKG}"/kube/default.sh
+    sed -i "s/^CNI_VERSION.*$/CNI_VERSION=${CNI_VERSION}/" "${PKG}"/kube/default.sh
+    cat "${PKG}"/kube/default.sh
 }
 
 main() {
